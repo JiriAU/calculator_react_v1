@@ -6,13 +6,20 @@ import Operator from "./Oparator";
 import { numbers, operators } from "../data";
 import Decimal from "./Decimal";
 import Equals from "./Equals";
+import ClearAll from "./ClearAll";
 
 function Calculator() {
-    const [display, setDisplay] = useState("");
+    const [display, setDisplay] = useState("0");
 
     function addValue(newValue) {
+        display === "0" && setDisplay("");
+
         setDisplay((prevValue) => {
-            return prevValue + newValue;
+            if (prevValue.length === 20) {
+                return prevValue;
+            } else {
+                return prevValue + newValue;
+            }
         });
     }
 
@@ -20,6 +27,7 @@ function Calculator() {
         <div id="calculator">
             <Display id="display" value={display} />
             <Clear id="clear" value="C" />
+            <ClearAll id="clearall" value="CA" />
 
             {numbers.map((number, i) => {
                 return (

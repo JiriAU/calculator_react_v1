@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Operator(props) {
+function ClearAll(props) {
     const [isHovered, setIsHovered] = useState(false);
 
     function handleMouseEnter() {
@@ -23,4 +23,4 @@ function Operator(props) {
     );
 }
 
-export default Operator;
+export default ClearAll;

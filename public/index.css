@@ -1,3 +1,146 @@
 body {
+    display: flex;
+    justify-content: center;
     margin: 0;
+    background-color: gray;
+}
+@font-face {
+    font-family: "digital_display_tfbregular";
+    src: url("./fonts/digital_display_tfb-webfont.woff") format("woff"),
+        url("./fonts/digital_display_tfb-webfont.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+#calculator {
+    background-color: lightgray;
+    display: grid;
+    gap: 10px;
+    padding: 30px;
+    width: fit-content;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    grid-template-areas:
+        "display display display display display"
+        "seven eight nine clear clearall"
+        "four five six . divide"
+        "one two three . multiply"
+        "decimal zero zero . subtract"
+        "equals equals equals equals add";
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+        rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+        rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+#display {
+    background-color: rgb(172, 237, 172);
+    grid-area: display;
+    text-align: right;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-family: digital_display_tfbregular;
+    font-size: 40px;
+    color: rgb(53, 78, 53);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px inset,
+        rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.btn {
+    display: flex;
+    background-color: lightblue;
+    padding: 20px 30px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.btnHover {
+    background-color: red;
+}
+
+/* 
+
+NUMBERS
+
+*/
+
+#zero {
+    grid-area: zero;
+}
+
+#one {
+    grid-area: one;
+}
+
+#two {
+    grid-area: two;
+}
+
+#three {
+    grid-area: three;
+}
+
+#four {
+    grid-area: four;
+}
+
+#five {
+    grid-area: five;
+}
+
+#six {
+    grid-area: six;
+}
+
+#seven {
+    grid-area: seven;
+}
+
+#eight {
+    grid-area: eight;
+}
+
+#nine {
+    grid-area: nine;
+}
+
+/* 
+
+OPERATORS
+
+*/
+
+#add {
+    grid-area: add;
+}
+
+#subtract {
+    grid-area: subtract;
+}
+
+#multiply {
+    grid-area: multiply;
+}
+
+#divide {
+    grid-area: divide;
+}
+
+#decimal {
+    grid-area: decimal;
+}
+
+#clear {
+    grid-area: clear;
+}
+#clearall {
+    grid-area: clearall;
+}
+
+#equals {
+    grid-area: equals;
 }
