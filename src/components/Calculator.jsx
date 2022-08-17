@@ -5,6 +5,7 @@ import Number from "./Number";
 import Operator from "./Oparator";
 import { numbers, operators } from "../data";
 import Decimal from "./Decimal";
+import Equals from "./Equals";
 
 function Calculator() {
     const [display, setDisplay] = useState("");
@@ -37,6 +38,8 @@ function Calculator() {
                     <Operator key={i} id={operator.id} value={operator.value} />
                 );
             })}
+
+            <Equals id="equals" value="=" />
         </div>
     );
 }

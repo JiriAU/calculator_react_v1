@@ -58,10 +58,6 @@ const operators = [
         id: "divide",
         value: "/",
     },
-    {
-        id: "equals",
-        value: "=",
-    },
 ];
 
 export { numbers, operators };
