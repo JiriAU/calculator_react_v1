@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import Clear from "./Clear";
 import Display from "./Display";
 import Number from "./Number";
-import Operator from "./Oparator";
+import Operator from "./Operator";
 import { numbers, operators } from "../data";
 import Decimal from "./Decimal";
 import Equals from "./Equals";
-import ClearAll from "./ClearAll";
+import RemoveLast from "./RemoveLast";
+
+// const string = "5+5";
+// console.log(eval(string));
 
 function Calculator() {
     const [display, setDisplay] = useState("0");
@@ -15,7 +18,7 @@ function Calculator() {
         display === "0" && setDisplay("");
 
         setDisplay((prevValue) => {
-            if (prevValue.length === 20) {
+            if (prevValue.length === 22) {
                 return prevValue;
             } else {
                 return prevValue + newValue;
@@ -23,11 +26,21 @@ function Calculator() {
         });
     }
 
+    function removeLastDigit() {
+        setDisplay((prevValue) => {
+            return prevValue.length <= 1 ? "0" : prevValue.slice(0, -1);
+        });
+    }
+
+    function clear() {
+        setDisplay("0");
+    }
+
     return (
         <div id="calculator">
             <Display id="display" value={display} />
-            <Clear id="clear" value="C" />
-            <ClearAll id="clearall" value="CA" />
+            <Clear id="clear" value="C" onClear={clear} />
+            <RemoveLast id="removeLast" value="<-" onRemove={removeLastDigit} />
 
             {numbers.map((number, i) => {
                 return (

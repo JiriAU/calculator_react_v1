@@ -17,6 +17,7 @@ function Clear(props) {
             id={props.id}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={props.onClear}
         >
             {props.value}
         </div>

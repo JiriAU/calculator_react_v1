@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ClearAll(props) {
+function RemoveLast(props) {
     const [isHovered, setIsHovered] = useState(false);
 
     function handleMouseEnter() {
@@ -17,10 +17,11 @@ function ClearAll(props) {
             id={props.id}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={props.onRemove}
         >
             {props.value}
         </div>
     );
 }
 
-export default ClearAll;
+export default RemoveLast;
