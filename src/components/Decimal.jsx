@@ -17,6 +17,9 @@ function Decimal(props) {
             id={props.id}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={() => {
+                props.onAddDecimal(props.value);
+            }}
         >
             {props.value}
         </div>

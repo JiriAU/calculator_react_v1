@@ -15,7 +15,7 @@ body {
 #calculator {
     background-color: lightgray;
     display: grid;
-    gap: 10px;
+    gap: 12px;
     padding: 30px;
     width: fit-content;
     height: fit-content;
@@ -39,13 +39,17 @@ body {
     text-align: right;
     padding: 20px;
     margin-bottom: 20px;
-    width: 500px;
     font-family: digital_display_tfbregular;
     font-size: 40px;
     color: rgb(53, 78, 53);
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px inset,
         rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
         rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.smallDisplay {
+    font-family: digital_display_tfbregular;
+    font-size: 20px;
 }
 
 .btn {

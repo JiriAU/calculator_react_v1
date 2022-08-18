@@ -17,6 +17,9 @@ function Operator(props) {
             id={props.id}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={() => {
+                props.onAddOperator(props.value);
+            }}
         >
             {props.value}
         </div>
