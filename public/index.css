@@ -24,10 +24,10 @@ body {
     grid-template-areas:
         "display display display display display"
         "seven eight nine removeLast clear"
-        "four five six . divide"
-        "one two three . multiply"
-        "decimal zero zero . subtract"
-        "equals equals equals equals add";
+        "four five six . ."
+        "one two three multiply divide"
+        "zero zero decimal add subtract"
+        "equals equals equals equals equals";
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
         rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
         rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
@@ -39,6 +39,7 @@ body {
     text-align: right;
     padding: 20px;
     margin-bottom: 20px;
+    width: 500px;
     font-family: digital_display_tfbregular;
     font-size: 40px;
     color: rgb(53, 78, 53);

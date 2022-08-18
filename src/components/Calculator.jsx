@@ -18,7 +18,7 @@ function Calculator() {
         display === "0" && setDisplay("");
 
         setDisplay((prevValue) => {
-            if (prevValue.length === 22) {
+            if (prevValue.length === 32) {
                 return prevValue;
             } else {
                 return prevValue + newValue;
