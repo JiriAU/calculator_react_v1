@@ -31,23 +31,48 @@ function Calculator() {
         });
     }
 
-    function addOperator(operator) {
-        if (numbersState[numbersState.length] === "-") {
-            setNumbersState((prevValue) => {
-                return [...prevValue, operator];
-            });
-        }
+    function addOperator(newOperator) {
+        const operatorsRegex = /[*/+-]/;
+
         setNumbersState((prevValue) => {
-            return [...prevValue, number, operator];
+            //
+            //
+            //
+            //
+            //
+            if (
+                number === "0" &&
+                operatorsRegex.test(prevValue[prevValue.length - 1]) &&
+                operatorsRegex.test(prevValue[prevValue.length - 2])
+            ) {
+                return [...prevValue].slice(0, -2).concat(newOperator);
+            } else if (number === "0" && newOperator === "-") {
+                return [...prevValue].concat(newOperator);
+            } else if (
+                number === "0" &&
+                operatorsRegex.test(prevValue[prevValue.length - 1])
+            ) {
+                return [...prevValue].slice(0, -1).concat(newOperator);
+            }
+            //
+            //
+            //
+            //
+            //
+            else if (number === "0") {
+                return [...prevValue];
+            }
+            return [...prevValue, number, newOperator];
         });
+        setNumber("0");
     }
 
     function calculate() {
-        console.log(numbersState[numbersState.length - 1]);
-        // const calculation = numbersState + operator + number1;
-        // const result = eval(calculation);
-        // clear();
-        // setNumber(result);
+        const calculation = numbersState.join("") + number;
+        const result = Math.fround(eval(calculation));
+        console.log(result);
+        setNumber(result);
+        setNumbersState([]);
     }
 
     function removeLastDigit() {
@@ -58,12 +83,12 @@ function Calculator() {
 
     function clear() {
         setNumber("0");
-        // setNumbersState("0");
+        setNumbersState([]);
     }
 
     return (
         <div id="calculator">
-            <Display value1={number} value2={numbersState} />
+            <Display value1={number} value2={numbersState.join("") + number} />
             <Clear id="clear" value="C" onClear={clear} />
             <RemoveLast id="removeLast" value="<-" onRemove={removeLastDigit} />
 
