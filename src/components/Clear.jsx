@@ -13,7 +13,7 @@ function Clear(props) {
 
     return (
         <div
-            className={isHovered ? "btn btnHover" : "btn"}
+            className={isHovered ? "btn btn_clear btnHover" : "btn btn_clear"}
             id={props.id}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

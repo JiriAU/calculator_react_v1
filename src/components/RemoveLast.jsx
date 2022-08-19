@@ -13,7 +13,7 @@ function RemoveLast(props) {
 
     return (
         <div
-            className={isHovered ? "btn btnHover" : "btn"}
+            className={isHovered ? "btn btn_remove btnHover" : "btn btn_remove"}
             id={props.id}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

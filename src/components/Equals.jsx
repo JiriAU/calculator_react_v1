@@ -13,7 +13,7 @@ function Equals(props) {
 
     return (
         <div
-            className={isHovered ? "btn btnHover" : "btn"}
+            className={isHovered ? "btn btn_equals btnHover" : "btn btn_equals"}
             id={props.id}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

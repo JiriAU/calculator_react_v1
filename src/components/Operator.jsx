@@ -13,7 +13,9 @@ function Operator(props) {
 
     return (
         <div
-            className={isHovered ? "btn btnHover" : "btn"}
+            className={
+                isHovered ? "btn btn_operator btnHover" : "btn btn_operator"
+            }
             id={props.id}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
