@@ -2,11 +2,9 @@ import React from "react";
 
 function Display(props) {
     return (
-        <div id="display">
-            <div className="smallDisplay">
-                {props.value2} {props.operator}
-            </div>
-            <div>{props.value1}</div>
+        <div className="whole_display">
+            <div className="smallDisplay">{props.value2.join("")}</div>
+            <div id="display">{props.value1}</div>
         </div>
     );
 }

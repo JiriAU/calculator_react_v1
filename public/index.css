@@ -33,9 +33,10 @@ body {
         rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
-#display {
+.whole_display {
     background-color: rgb(172, 237, 172);
     grid-area: display;
+    max-width: 360px;
     text-align: right;
     padding: 20px;
     margin-bottom: 20px;
@@ -50,6 +51,7 @@ body {
 .smallDisplay {
     font-family: digital_display_tfbregular;
     font-size: 20px;
+    overflow-wrap: break-word;
 }
 
 .btn {
@@ -148,4 +150,8 @@ OPERATORS
 
 #equals {
     grid-area: equals;
+}
+
+#enter {
+    grid-area: enter;
 }

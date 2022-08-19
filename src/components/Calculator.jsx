@@ -8,24 +8,14 @@ import Decimal from "./Decimal";
 import Equals from "./Equals";
 import RemoveLast from "./RemoveLast";
 
-// if pressing "-" and there is already operator set to "-", then change num1 to "-num1" if pressed again, change it back to "+num1" ... maybe useState "negative" ... true or false to control this
-
-// when press operator check there is num2(or 0)
-// if !num2 then add num1 to num2, change num1 to 0 and add operator
-//if num2 change operator to new one
-
-// const string = "5+5";
-// console.log(eval(string));
-
 function Calculator() {
-    const [num1, setNum1] = useState("0");
-    const [num2, setNum2] = useState("0");
-    const [operator, setOperator] = useState("");
+    const [number, setNumber] = useState("0");
+    const [numbersState, setNumbersState] = useState([]);
 
-    function addValue1(newValue) {
-        num1 === "0" && setNum1("");
+    function addValue(newValue) {
+        number === "0" && setNumber("");
 
-        setNum1((prevValue) => {
+        setNumber((prevValue) => {
             if (prevValue.length === 23) {
                 return prevValue;
             } else {
@@ -35,29 +25,45 @@ function Calculator() {
     }
 
     function addDecimal(value) {
-        setNum1((prevValue) => {
-            const regex = new RegExp(/,/);
-            return regex.test(num1) ? prevValue : prevValue + value;
+        setNumber((prevValue) => {
+            const regex = new RegExp(/\./);
+            return regex.test(number) ? prevValue : prevValue + value;
         });
     }
 
-    function addOperator(value) {}
+    function addOperator(operator) {
+        if (numbersState[numbersState.length] === "-") {
+            setNumbersState((prevValue) => {
+                return [...prevValue, operator];
+            });
+        }
+        setNumbersState((prevValue) => {
+            return [...prevValue, number, operator];
+        });
+    }
+
+    function calculate() {
+        console.log(numbersState[numbersState.length - 1]);
+        // const calculation = numbersState + operator + number1;
+        // const result = eval(calculation);
+        // clear();
+        // setNumber(result);
+    }
 
     function removeLastDigit() {
-        setNum1((prevValue) => {
+        setNumber((prevValue) => {
             return prevValue.length <= 1 ? "0" : prevValue.slice(0, -1);
         });
     }
 
     function clear() {
-        setNum1("0");
-        setNum2("0");
-        setOperator("");
+        setNumber("0");
+        // setNumbersState("0");
     }
 
     return (
         <div id="calculator">
-            <Display value1={num1} value2={num2} operator={operator} />
+            <Display value1={number} value2={numbersState} />
             <Clear id="clear" value="C" onClear={clear} />
             <RemoveLast id="removeLast" value="<-" onRemove={removeLastDigit} />
 
@@ -67,11 +73,11 @@ function Calculator() {
                         key={i}
                         id={number.id}
                         value={number.value}
-                        onAddValue={addValue1}
+                        onAddValue={addValue}
                     />
                 );
             })}
-            <Decimal id="decimal" value="," onAddDecimal={addDecimal} />
+            <Decimal id="decimal" value="." onAddDecimal={addDecimal} />
 
             {operators.map((operator, i) => {
                 return (
@@ -84,7 +90,7 @@ function Calculator() {
                 );
             })}
 
-            <Equals id="equals" value="=" />
+            <Equals id="equals" value="=" onCalculate={calculate} />
         </div>
     );
 }

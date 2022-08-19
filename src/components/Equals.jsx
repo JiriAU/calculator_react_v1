@@ -17,6 +17,7 @@ function Equals(props) {
             id={props.id}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onClick={props.onCalculate}
         >
             {props.value}
         </div>
