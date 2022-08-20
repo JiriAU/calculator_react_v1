@@ -8,6 +8,8 @@ import Decimal from "./Decimal";
 import Equals from "./Equals";
 import RemoveLast from "./RemoveLast";
 
+const operatorsRegex = /[*/+-]/;
+
 function Calculator() {
     const [number, setNumber] = useState("0");
     const [numbersState, setNumbersState] = useState([]);
@@ -32,14 +34,7 @@ function Calculator() {
     }
 
     function addOperator(newOperator) {
-        const operatorsRegex = /[*/+-]/;
-
         setNumbersState((prevValue) => {
-            //
-            //
-            //
-            //
-            //
             if (
                 number === "0" &&
                 operatorsRegex.test(prevValue[prevValue.length - 1]) &&
@@ -53,13 +48,7 @@ function Calculator() {
                 operatorsRegex.test(prevValue[prevValue.length - 1])
             ) {
                 return [...prevValue].slice(0, -1).concat(newOperator);
-            }
-            //
-            //
-            //
-            //
-            //
-            else if (number === "0") {
+            } else if (number === "0") {
                 return [...prevValue];
             }
             return [...prevValue, number, newOperator];
@@ -91,6 +80,8 @@ function Calculator() {
             <Display value1={number} value2={numbersState.join("") + number} />
             <Clear id="clear" value="C" onClear={clear} />
             <RemoveLast id="removeLast" value="<-" onRemove={removeLastDigit} />
+            <Decimal id="decimal" value="." onAddDecimal={addDecimal} />
+            <Equals id="equals" value="=" onCalculate={calculate} />
 
             {numbers.map((number, i) => {
                 return (
@@ -102,7 +93,6 @@ function Calculator() {
                     />
                 );
             })}
-            <Decimal id="decimal" value="." onAddDecimal={addDecimal} />
 
             {operators.map((operator, i) => {
                 return (
@@ -114,8 +104,6 @@ function Calculator() {
                     />
                 );
             })}
-
-            <Equals id="equals" value="=" onCalculate={calculate} />
         </div>
     );
 }
